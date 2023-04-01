@@ -55,6 +55,38 @@ todoRouter.get("/:title", (req, res) => {
         })
     })
 })
+todoRouter.put("/:title", (req, res) => {
+    const title = req.params.title.toLowerCase();
+    // console.log("param is ", title);
+    const updatedTodo = req.body
+
+    // return res.send("Got single object")
+    return utils.readData()
+    .then((dataArr)=>{
+        // find() expects a predicate so sending a arrow function
+        const idx = dataArr.findIndex((todo)=> {
+            return todo.title.toLowerCase() === title
+        })
+
+        // if idx exists
+        if(idx != -1){
+            dataArr[idx] = {
+                ...dataArr[idx],
+                ...updatedTodo
+            }
+        }
+        return fs.writeFile("db.json", JSON.stringify(dataArr))
+        // fs.writeFile is promise so it needs to be fulfilled using then block 
+        // but because of using return we can fulfill it outside this block too below.
+    })
+    .then(()=>{
+        return res.status(200).json({
+            message: "Todo updated successfully",
+            data: updatedTodo,
+            error: null
+        })
+    })
+})
 
 // module.exports = {
 //     // todoRouter
