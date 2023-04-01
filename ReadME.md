@@ -50,3 +50,25 @@ touch server.js
    1. Like `data` is same as `data: data` 
 8. **VERY IMP :**
    1. `app.use(express.json())` is used to collect data from req.body in chunks
+
+#### Logical steps :
+
+1. Created server using express()
+2. Listened to it on port 3000
+3. Created /greetings call
+4. Created GET /todos call
+   * readData() through `fs`. Data obtained in string so parsed it into "Array object" using JSON.parse()
+   * then sent response object in JSON with keys ---> "message", "data", "error"
+5. Created POST /todos call
+   * used middleware of `app.use(express.json())` --> to get body from request body into --> newTodo
+   * readData() --> to get older data (for persistency)
+   * newTodo --> Pushed to array object --> "older + newer = final data"
+   * fs.writeFile --> "final data" --> stringify the array object --> store it
+6. Utils
+   *  import neccessary modules.
+   *  readData() --> "file_path" --? read the data from string --> converted string to array object using `JSON.parse()`
+   *  Exported the functions
+7. Routes
+   * `express.Router()` to make and channelize routes
+   * GET method 
+   * Exported the method
