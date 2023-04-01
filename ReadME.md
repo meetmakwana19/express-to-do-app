@@ -70,5 +70,5 @@ touch server.js
    *  Exported the functions
 7. Routes
    * `express.Router()` to make and channelize routes
-   * GET method 
+   * GET, POST method --> Writing all HTTP Methods in routes now. 
    * Exported the method
