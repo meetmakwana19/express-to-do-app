@@ -87,6 +87,34 @@ todoRouter.put("/:title", (req, res) => {
         })
     })
 })
+todoRouter.delete("/:title", (req, res) => {
+    const title = req.params.title.toLowerCase();
+    let deletedObj
+
+    return utils.readData()
+    .then((dataArr)=>{
+        // find() expects a predicate so sending a arrow function
+        const idx = dataArr.findIndex((todo)=> {
+            return todo.title.toLowerCase() === title
+        })
+
+        // if idx exists
+        if(idx != -1){
+            deletedObj = dataArr.splice(idx, 1)
+        }
+
+        return fs.writeFile("db.json", JSON.stringify(dataArr))
+        // fs.writeFile is promise so it needs to be fulfilled using then block 
+        // but because of using return we can fulfill it outside this block too below.
+    })
+    .then(()=>{
+        return res.status(200).json({
+            message: "Todo deleted successfully",
+            data: deletedObj,
+            error: null
+        })
+    })
+})
 
 // module.exports = {
 //     // todoRouter
