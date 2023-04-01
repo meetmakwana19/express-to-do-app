@@ -1,6 +1,7 @@
 const express = require("express")
 const fs = require("fs/promises")
 const utils = require("./utils/utils")
+const todoRoute = require("./routes/todos.routes")
 
 // initialize express app
 const app = express()
@@ -14,6 +15,13 @@ app.use(express.json())
 app.get("/greeting", (req, res) => {
     return res.send("Greetings from Todo app.")
 })
+
+// THIS IS BASE URL
+// http://localhost:3000/todos
+
+// app.use("/todos", todoRoute.router) // if using const todoRoute = require() along with module.exports = { router: todoRouter }
+app.use("/todos", todoRoute) // if module.exports = todoRouter
+
 
 // ROUTERS
 app.get("/todos", (req, res) => {

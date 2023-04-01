@@ -12,5 +12,7 @@ function readData(){
 }
 
 module.exports = {
+    // readData: readData
+    // same key same value shortcut 
     readData
 }
