@@ -1,0 +1,12 @@
+[
+  {
+    "title": "Task 1",
+    "description": "Task is to be initialised",
+    "completed": false
+  },
+  {
+    "title": "Task 1",
+    "description": "Task is to be deployed",
+    "completed": true
+  }
+]

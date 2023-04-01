@@ -45,4 +45,6 @@ touch server.js
    ```
    npm run start:dev
    ```
-   3. xs
+6. Created `db.json`
+7. ES6 shortcut when key and value are same so can only write one thing
+   1. Like `data` is same as `data: data` 
