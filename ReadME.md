@@ -48,3 +48,5 @@ touch server.js
 6. Created `db.json`
 7. ES6 shortcut when key and value are same so can only write one thing
    1. Like `data` is same as `data: data` 
+8. **VERY IMP :**
+   1. `app.use(express.json())` is used to collect data from req.body in chunks

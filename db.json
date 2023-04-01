@@ -8,5 +8,8 @@
     "title": "Task 1",
     "description": "Task is to be deployed",
     "completed": true
-  }
+  },
+  null,
+  null,
+  { "title": "Task 3", "description": "Task is to be run", "completed": true }
 ]
