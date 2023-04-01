@@ -35,7 +35,26 @@ todoRouter.post("/", (req, res) => {
         })
     })
 })
+// colon : means anything can be there in the params for "title"
+todoRouter.get("/:title", (req, res) => {
+    const title = req.params.title.toLowerCase();
+    console.log("param is ", title);
 
+    // return res.send("Got single object")
+    return utils.readData()
+    .then((dataArr)=>{
+        // find() expects a predicate so sending a arrow function
+        const todoObj = dataArr.find((todo)=> {
+            return todo.title.toLowerCase() === title
+        })
+        console.log("obj is ---", todoObj);
+        return res.status(200).json({
+            message: "Todo fetched successfully",
+            data: todoObj,
+            error: null
+        })
+    })
+})
 
 // module.exports = {
 //     // todoRouter

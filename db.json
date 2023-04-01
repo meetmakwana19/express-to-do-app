@@ -1,11 +1,11 @@
 [
   {
-    "title": "Task 1",
+    "title": "Task1",
     "description": "Task is to be initialised",
     "completed": false
   },
   {
-    "title": "Task 1",
+    "title": "Task2",
     "description": "Task is to be deployed",
     "completed": true
   },
