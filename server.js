@@ -1,8 +1,13 @@
 const express = require("express")
 const todoRoute = require("./routes/todos.routes")
+const viewsRouter = require("./routes/view")
 
 // initialize express app
 const app = express()
+
+// mounting view engine to get extra capability of using EJS
+// setting the view engine of express app to ejs (by default it is HTML)
+app.set("view engine", "ejs")
 
 // middlewares
 
@@ -14,7 +19,10 @@ app.get("/greeting", (req, res) => {
     return res.send("Greetings from Todo app.")
 })
 
-// ROUTERS
+// VIEWS ROUTERS
+app.use("/", viewsRouter)
+
+// API ROUTERS
 
 // THIS IS BASE URL
 // http://localhost:3000/todos
