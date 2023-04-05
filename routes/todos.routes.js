@@ -115,6 +115,23 @@ todoRouter.delete("/:title", (req, res) => {
         })
     })
 })
+todoRouter.delete("/deleteMany", (req, res) => {
+    const titleArr = req.body
+    console.log("title arr is ------", titleArr);
+    // return utils.readData()
+    // .then((data)=>{
+
+    //     // writing the JSON object after converting it to string
+    //     // return fs.writeFile("db.json", JSON.stringify(data))
+    // })
+    // .then(()=>{
+    //     return res.status(201).json({
+    //         message: "All todos fetched",
+    //         data: newTodo,
+    //         error: null
+    //     })
+    // })
+})
 
 // module.exports = {
 //     // todoRouter

@@ -1,14 +1,1 @@
-[
-  {
-    "title": "Task2",
-    "description": "Task is to be deployed",
-    "completed": true
-  },
-  { "title": "Task 3", "description": "Task is to be run", "completed": true },
-  {
-    "title": "Task1",
-    "description": "Task is to be initialised",
-    "completed": false,
-    "new_key": "testing"
-  }
-]
+[{"title":"Task2","description":"Task is to be deployed","completed":true},{"title":"Task 3","description":"Task is to be run","completed":true},{"title":"Task1","description":"Task is to be initialised","completed":false,"new_key":"testing"}]

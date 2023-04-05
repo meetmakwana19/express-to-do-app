@@ -72,3 +72,7 @@ touch server.js
    * `express.Router()` to make and channelize routes
    * GET, POST method --> Writing all HTTP Methods in routes now. 
    * Exported the method
+
+reduce(acccumulator, current)
+
+using filter to filter out the delete objs
