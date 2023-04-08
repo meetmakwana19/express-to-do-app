@@ -1,6 +1,7 @@
 const express = require("express")
 const fs = require("fs/promises")
 const utils = require("../utils/utils")
+const { body, validationResult } = require("express-validator")
 
 // calling function express.Router() which is used to channelise all the routers
 const todoRouter = express.Router()
@@ -17,9 +18,33 @@ todoRouter.get("/", (req, res)=>{
         })
     })
 })
-todoRouter.post("/", (req, res) => {
+todoRouter.post("/",
+// this is custom validation on body
+body("title").custom((title)=>{
+    if(typeof title === "string" && title.length >= 3){
+        return true;
+    }
+    return false;
+}).withMessage("Provide suitable title with more than or equals to 3 characters"),
+body("completed").custom((completed) => {
+    if(typeof completed === "boolean"){
+        return true
+    }
+    return false
+}).withMessage("Completed radio button should be true/false."),
+(req, res) => {
     const newTodo = req.body
 
+    console.log("---post body---", newTodo);
+    const errors = validationResult(req);
+    if(!errors.isEmpty()){
+        console.log("---erors---", errors);
+         return res.status(400).json({
+            message: "Todo creation failed.",
+            error: errors.array(),
+            data: {}
+         })
+    }
     return utils.readData()
     .then((data)=>{
         data.push(newTodo)
@@ -29,7 +54,7 @@ todoRouter.post("/", (req, res) => {
     })
     .then(()=>{
         return res.status(201).json({
-            message: "All todos fetched",
+            message: "New todo added",
             data: newTodo,
             error: null
         })
