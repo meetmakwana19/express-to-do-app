@@ -38,7 +38,7 @@ todoRouter.post("/", (req, res) => {
 // colon : means anything can be there in the params for "title"
 todoRouter.get("/:title", (req, res) => {
     const title = req.params.title.toLowerCase();
-    console.log("param is ", title);
+    // console.log("param is ", title);
 
     // return res.send("Got single object")
     return utils.readData()
@@ -47,7 +47,7 @@ todoRouter.get("/:title", (req, res) => {
         const todoObj = dataArr.find((todo)=> {
             return todo.title.toLowerCase() === title
         })
-        console.log("obj is ---", todoObj);
+        // console.log("obj is ---", todoObj);
         return res.status(200).json({
             message: "Todo fetched successfully",
             data: todoObj,
@@ -117,7 +117,7 @@ todoRouter.delete("/:title", (req, res) => {
 })
 todoRouter.delete("/deleteMany", (req, res) => {
     const titleArr = req.body
-    console.log("title arr is ------", titleArr);
+    // console.log("title arr is ------", titleArr);
     // return utils.readData()
     // .then((data)=>{
 

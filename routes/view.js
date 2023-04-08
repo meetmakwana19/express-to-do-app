@@ -12,6 +12,11 @@ router.get("", (req, res) => {
     })
 })
 
+router.get("/todos/add", (req, res) => {
+    return res.render("todo_add", {title: "Add"})
+})
+
+// parameters routes at last
 router.get("/todos/:title", (req, res) => {
     const {title} = req.params
     console.log("title is ", title);
@@ -26,4 +31,5 @@ router.get("/todos/:title", (req, res) => {
         return res.render("todo", {title: "Update", todo})
     })
 })
+
 module.exports = router
