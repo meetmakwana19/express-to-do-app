@@ -83,12 +83,14 @@
                     body: JSON.stringify(body)
                 })
                 // fetch is a promise so need to resolve it
-                .then((response)=>{
-                    console.log("PUT Response = ", response.status);
-                })
-                .catch((error)=>{
-                    console.log("---Error---", error);
-                })
+                // .then((response)=>{
+                //     // console.log("PUT Response = ", response.status);
+                //     // alert(response.body)
+                //     response.json()
+                // })
+                .then((response) => response.json())
+                .then((data) => alert(data.message))
+                .catch((error)=> alert(error.toString()))
             })
         </script>
 <%- include("partials/footer")  %>
