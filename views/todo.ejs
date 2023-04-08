@@ -72,7 +72,8 @@
                     completed: completedDone.checked ? true : false 
                 }
 
-                fetch(`http://localhost:3000/api/todos/${title}`, {
+                // fetch(`http://localhost:3000/api/todos/${title}`, {
+                fetch(`/api/todos/${title}`, {
                     method: "PUT",
                     // without header the request payload will be [object Object]
                     headers: {
