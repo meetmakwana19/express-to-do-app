@@ -54,4 +54,40 @@
                 </div>
             </div>
         </div>
+
+        <script>
+            document.getElementById("todoUpdateForm").addEventListener("submit", function(event){
+                event.preventDefault()
+                console.log("submittig");
+
+                const title = document.getElementById("title").value
+                const description = document.getElementById("description").value
+                const completedDone = document.getElementById("completedDone")
+
+                // console.log("checkbox is ", completedDone.checked);
+                // console.log("checkbox is ", title.value);
+                const body = {
+                    title,
+                    description,
+                    completed: completedDone.checked ? true : false 
+                }
+
+                fetch(`http://localhost:3000/api/todos/${title}`, {
+                    method: "PUT",
+                    // without header the request payload will be [object Object]
+                    headers: {
+                        "Accept" : "application/json",
+                        "Content-type": "application/json"
+                    },
+                    body: JSON.stringify(body)
+                })
+                // fetch is a promise so need to resolve it
+                .then((response)=>{
+                    console.log("PUT Response = ", response.status);
+                })
+                .catch((error)=>{
+                    console.log("---Error---", error);
+                })
+            })
+        </script>
 <%- include("partials/footer")  %>

@@ -37,7 +37,7 @@ app.use("/", viewsRouter)
 // http://localhost:3000/todos
 
 // app.use("/todos", todoRoute.router) // if using const todoRoute = require() along with module.exports = { router: todoRouter }
-app.use("/todos", todoRoute) // if module.exports = todoRouter
+app.use("/api/todos", todoRoute) // if module.exports = todoRouter
 
 app.listen(3000, () => {
     console.log("Todo server is running");
