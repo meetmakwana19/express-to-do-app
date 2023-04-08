@@ -11,7 +11,26 @@ app.set("view engine", "ejs")
 
 // middlewares
 
+// middleware #1
+// making logger
+// app.user() having no path "" but has a function
+// using a function in it makes it a middleware
+app.use(function(req, res, next){
+    console.log("New request :", new Date().toLocaleString(), " , Method: ",req.method, " , URL: ", req.url);
+    // can log many more things like param, query, body
+
+    // attaching something to the alive request
+    req.randomKey = "This is random key"
+    
+    // using next which is a function to tell the next middleware to execute
+    // it works like return for the 
+    // next tells the next lines of code to execute after it
+    next();
+})
+
+// middleware #2
 // **VERY IMP - this is used to collect data from req.body in chunks
+// without this the body parsing would be defined in the POST calls
 app.use(express.json())
 
 // making a greeting call to check server is running or not

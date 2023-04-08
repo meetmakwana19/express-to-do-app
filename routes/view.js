@@ -4,6 +4,7 @@ const utils = require("../utils/utils")
 const router = express.Router()
 
 router.get("", (req, res) => {
+    console.log("The passed key from request is ----- ", req.randomKey);
     return utils.readData()
     .then((dataArr) => {
         // to render the files processed by view engine
@@ -12,14 +13,14 @@ router.get("", (req, res) => {
 })
 
 router.get("/todos/:title", (req, res) => {
-    const title = req.params.toLowerCase()
+    const title = req.params.toLowerCase
     console.log("title is ", title.title);
 
     return utils.readData()
     .then((dataArr) => {
         const todoObj = dataArr.find((todo) => {
             console.log("element is ", todo);
-            return todo.title.toLowerCase() === title 
+            return todo.title.toLowerCase() === title
         })
         console.log("todo is ", todoObj);
         return res.render("todo", {title: "Update"}, todoObj)

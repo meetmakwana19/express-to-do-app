@@ -96,3 +96,9 @@ touch server.js
 reduce(acccumulator, current)
 
 using filter to filter out the delete objs
+
+## Session 
+
+1. Making logger in the `server.js`
+2. Middlewares are always called sequentially in expressJS
+3. So made 1st middleware for express app for logger
