@@ -13,17 +13,17 @@ router.get("", (req, res) => {
 })
 
 router.get("/todos/:title", (req, res) => {
-    const title = req.params.toLowerCase
-    console.log("title is ", title.title);
+    const {title} = req.params
+    console.log("title is ", title);
 
     return utils.readData()
     .then((dataArr) => {
-        const todoObj = dataArr.find((todo) => {
-            console.log("element is ", todo);
-            return todo.title.toLowerCase() === title
+        const todo = dataArr.find((element) => {
+            console.log("element is ", element);
+            return element.title.toLowerCase() === title.toLowerCase()
         })
-        console.log("todo is ", todoObj);
-        return res.render("todo", {title: "Update"}, todoObj)
+        console.log("todo is ", todo);
+        return res.render("todo", {title: "Update", todo})
     })
 })
 module.exports = router
