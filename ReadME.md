@@ -106,4 +106,3 @@ using filter to filter out the delete objs
 5. Added `npm install --save express-validator`
 6. Updated todoRouter.post() and used custom express-validator
 7. Added form in a new todo_add.ejs view 
-8. 

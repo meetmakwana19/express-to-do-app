@@ -20,7 +20,7 @@ app.use(middlewares.logger)
 
 // middleware #2
 // **VERY IMP - this is used to collect data from req.body in chunks
-// without this the body parsing would be defined in the POST calls
+// without this the body parsing would be undefined in the POST calls
 app.use(express.json())
 
 // making a greeting call to check server is running or not

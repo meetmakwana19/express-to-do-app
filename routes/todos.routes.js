@@ -6,7 +6,7 @@ const { body, validationResult } = require("express-validator")
 // calling function express.Router() which is used to channelise all the routers
 const todoRouter = express.Router()
 
-// http://localhost:3000/todos
+// http://localhost:3000/api/todos
 todoRouter.get("/", (req, res)=>{
     return utils.readData()
     .then((data)=> {
@@ -18,6 +18,8 @@ todoRouter.get("/", (req, res)=>{
         })
     })
 })
+
+// http://localhost:3000/api/todos 
 todoRouter.post("/",
 // this is custom validation on body
 body("title").custom((title)=>{
@@ -36,7 +38,10 @@ body("completed").custom((completed) => {
     const newTodo = req.body
 
     console.log("---post body---", newTodo);
+
+    // to show errors in the response object
     const errors = validationResult(req);
+    
     if(!errors.isEmpty()){
         console.log("---erors---", errors);
          return res.status(400).json({

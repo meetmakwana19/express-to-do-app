@@ -6,7 +6,7 @@ function readData(){
     return fs.readFile("db.json", "utf-8")
     .then((data)=>{
         // readFile reads the array/JSON object{} from the db.json in string format so to return in JSON form we do JSON.parse
-        // and data.toString() for safety so that a string is converted to JSON as JSON parsing can through error if string is not proper
+        // and data.toString() for safety so that a string is converted to JSON as JSON parsing can throw error if string is not proper
         return JSON.parse(data.toString())
     })
 }
