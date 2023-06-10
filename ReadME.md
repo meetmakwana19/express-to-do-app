@@ -106,3 +106,16 @@ using filter to filter out the delete objs
 5. Added `npm install --save express-validator`
 6. Updated todoRouter.post() and used custom express-validator
 7. Added form in a new todo_add.ejs view 
+
+## Authentication :
+
+Normal behaviour :
+Login -> credentials -> yes/no approve
+
+secured behaviour:
+Login -> credentials -> hash(pw)+SALT -> store in DB
+
+1. Created new `views/register.ejs`
+2. Created new `auth.routes.js`
+3. Adding the render routing for register in the `routes/views.js`
+4. Renamed to `views.routes.js` and changed respectively the imports in the server.js

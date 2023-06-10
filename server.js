@@ -1,6 +1,7 @@
 const express = require("express")
 const todoRoute = require("./routes/todos.routes")
-const viewsRouter = require("./routes/view")
+const viewsRouter = require("./routes/view.routes")
+const authRouter = require("./routes/auth.routes")
 const middlewares = require("./middlewares/index")
 
 // initialize express app
@@ -38,6 +39,7 @@ app.use("/", viewsRouter)
 
 // app.use("/todos", todoRoute.router) // if using const todoRoute = require() along with module.exports = { router: todoRouter }
 app.use("/api/todos", todoRoute) // if module.exports = todoRouter
+app.use("/api/v1/auth", authRouter) 
 
 app.listen(3000, () => {
     console.log("Todo server is running");

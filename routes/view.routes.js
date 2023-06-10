@@ -15,6 +15,9 @@ router.get("", (req, res) => {
 router.get("/todos/add", (req, res) => {
     return res.render("todo_add", {title: "Add"})
 })
+router.get("/auth/register", (req, res) => {
+    return res.render("register", {title: "Register"})
+})
 
 // parameters routes at last
 router.get("/todos/:title", (req, res) => {
