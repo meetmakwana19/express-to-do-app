@@ -75,7 +75,8 @@
                         "Accept" : "application/json",
                         "Content-type": "application/json",
                         // sending a custom key value in the headers to check it via the middleware isAuthenticated
-                        "authorization": token
+                        // Authorization = authorization... it is lower cased internally
+                        "Authorization": token
                     },
                     body: JSON.stringify(body)
                 })
@@ -84,6 +85,8 @@
                     console.log("---Token respone---", token, response.status);
 
                     return response.json()
+
+                    // this then block is for response.json() which is a promise
                     .then((data) => {
                         if(data.redirect){
                             alert("You are not logged in. So redirecting you to the login page")

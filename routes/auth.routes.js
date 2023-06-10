@@ -1,6 +1,8 @@
 const express = require("express")
 const { body, validationResult } = require("express-validator")
 const router = express.Router()
+var jwt = require('jsonwebtoken');
+const { SECRET } = require("../config")
 
 const USER = []
 
@@ -97,7 +99,7 @@ router.post("/login", (req, res) => {
 
     // create access token
     // use jwt token 
-    const token = JWT.sign( {email}, SECRET )
+    const token = jwt.sign( {email}, SECRET )
 
     // 200 for successfull check
     return res.status(200).json({

@@ -8,7 +8,7 @@ const { isAuthenticated } = require("../middlewares")
 const todoRouter = express.Router()
 
 // http://localhost:3000/api/todos
-todoRouter.get("/", (req, res)=>{
+todoRouter.get("/", isAuthenticated, (req, res)=>{
     return utils.readData()
     .then((data)=> {
         res.status(200).json({
