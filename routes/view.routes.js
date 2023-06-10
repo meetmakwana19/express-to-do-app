@@ -1,5 +1,6 @@
 const express = require("express")
-const utils = require("../utils/utils")
+const utils = require("../utils/utils");
+const { isAuthenticated } = require("../middlewares");
 
 const router = express.Router()
 
@@ -12,6 +13,7 @@ router.get("", (req, res) => {
     })
 })
 
+// isAuthenticated is a middleware
 router.get("/todos/add", (req, res) => {
     return res.render("todo_add", {title: "Add"})
 })

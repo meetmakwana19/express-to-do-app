@@ -2,6 +2,7 @@ const express = require("express")
 const fs = require("fs/promises")
 const utils = require("../utils/utils")
 const { body, validationResult } = require("express-validator")
+const { isAuthenticated } = require("../middlewares")
 
 // calling function express.Router() which is used to channelise all the routers
 const todoRouter = express.Router()
@@ -20,7 +21,9 @@ todoRouter.get("/", (req, res)=>{
 })
 
 // http://localhost:3000/api/todos 
-todoRouter.post("/",
+todoRouter.post("/", 
+// middleware first is applied
+isAuthenticated,
 // this is custom validation on body
 body("title").custom((title)=>{
     if(typeof title === "string" && title.length >= 3){

@@ -11,6 +11,17 @@ function logger(req, res, next){
     next();
 }
 
+function isAuthenticated(req, res, next){
+    console.log("----------", req.headers.authorization);
+    if(!req.headers.authorization || req.headers.authorization === "null"){
+        // return res.redirect("auth/login")
+        return res.status(200).json({
+            redirect: true
+        })
+    }
+    next()
+}
+
 module.exports = {
-    logger
+    logger, isAuthenticated
 }

@@ -93,13 +93,18 @@ router.post("/login", (req, res) => {
             error: "Password does not match",
             data: {}
         })
-
     }
+
+    // create access token
+    // use jwt token 
+    const token = JWT.sign( {email}, SECRET )
 
     // 200 for successfull check
     return res.status(200).json({
         message: "Success ! User logged in",
-        data: {},
+        data: {
+            access_token: token
+        },
         errors: null
     })
 })
