@@ -123,7 +123,16 @@ Login -> credentials -> hash(pw)+SALT -> store in DB
 6. -------------Protected route for add todo functionality :
 7. Installed using `npm i jsonwebtoken`
 8. Added `isAuthenticated()` in the `middlewares/index.js`
-9.  Signing a JWT token in the login post route in the `auth.routes` and then sending that jwt token as access token through the frontend login.ejs
-10. Getting that token from backend to frontend and setting it as local storage in the `login.ejs` when login is successful.
+9.  Signing a JWT token in the login post route in the `auth.routes` and then sending that jwt token as access token through the api response to the frontend login.ejs
+10. Getting that token from backend response to frontend and setting it as local storage via  `login.ejs` when login is successful.
 11. Implementing the workflow of isAuthenticated in the frontend of adding todo page where todo wont be added if user is not logged in.
 12. `todo_add.ejs` uses that localstorage access_token and sends it via header . Then middleware checks its presence and based on response redirect is made
+
+Assignment 5 Objectives:
+1. Add isAuthenticated to single GET, UPDATE and DELETE Todo
+2. Covert USER Array to files.json, and store User information in json format (make use of utils).
+3. Use BcryptJS to hash the password and store it.
+4. Variable declarations should be in underscore case and function should be in camel case.
+5. Use promises in defined manner.
+6. Modify the project as you like and add protected routes where you feel required.
+7. Try to host the project (not necessary), if hosted then write down the steps.

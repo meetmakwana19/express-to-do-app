@@ -13,6 +13,8 @@ function logger(req, res, next){
 
 function isAuthenticated(req, res, next){
     console.log("----------", req.headers.authorization);
+
+    // checking if the incoming request had some header of key named "authorization" or not
     if(!req.headers.authorization || req.headers.authorization === "null"){
         // return res.redirect("auth/login")
         return res.status(200).json({
