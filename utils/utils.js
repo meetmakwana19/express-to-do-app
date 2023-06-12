@@ -11,8 +11,17 @@ function readData(){
     })
 }
 
+function readUsers() {
+    return fs.readFile("users.json", "utf-8")
+    .then((data) => {
+        // console.log("data is ", JSON.parse(data.toString()))
+        return JSON.parse(data.toString());
+    })
+}
+
 module.exports = {
     // readData: readData
     // same key same value shortcut 
-    readData
+    readData, 
+    readUsers
 }

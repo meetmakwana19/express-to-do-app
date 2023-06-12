@@ -136,6 +136,8 @@ Task :
 - [x] isAuthenticated in 
   - [x] single GET todo (backend + frontend)
   - [x] single PUT todo (backend + frontend)
+  - [x] single DELETE todo (backend + frontend)
+- [x] users.json done for register & login
 
 
 Assignment 5 Objectives:

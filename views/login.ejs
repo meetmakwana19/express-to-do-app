@@ -65,6 +65,8 @@
                         
                         // --- for protected routes purpose
                         localStorage.setItem("access_token", data.data.access_token)
+
+                        window.location.href = "/"
                     }
                 })
                 .catch((error)=> alert(error.toString()))
