@@ -41,10 +41,9 @@
                                         Not Done
                                     </label>
                                 </div>
-                                <div class="form-check">
-                                    <div class="text-center">
-                                        <input class="btn btn-primary" type="submit" value="Update" />
-                                    </div>
+                                <div class="texts-center mt-4">
+                                    <input class="btn btn-primary" type="submit" value="Update" />
+                                    <button type="button" onclick="deleteTodo(`<%=todo.title%>`)" class="btn btn-danger">Delete</button>
                                 </div>
                             </form>
                         </div>                
@@ -111,6 +110,9 @@
                         // successful update
                         else{
                             alert(data.message)
+
+                            // to reload the page to show the changes made on update as this is not react app
+                            location.reload()
                         }
                     })
                 })
@@ -118,5 +120,37 @@
                 // .then((data) => alert(data.message))
                 .catch((error)=> alert(error.toString()))
             })
+
+            function deleteTodo(todo_title){
+                console.log("You gonna delete me ? :( ", todo_title);
+
+                let token = localStorage.getItem("access_token")
+
+                fetch(`/api/todos/${todo_title}`, {
+                    method: "DELETE",
+                    headers: {
+                        "authorization": token
+                    }
+                })
+                .then((response) => {
+                    return response.json()
+                    .then((data) => {
+
+                        // if for some reason the user deletes localStorage variable and is on the todo page with access to delete button
+                        if(data.redirect){
+                            alert("You are not logged in. So redirecting you to the login page")
+                            window.location.href = "/auth/login"
+                            return
+                        }
+
+                        // console.log("Delete msg : ", JSON.stringify(data));
+                        alert(data.message)
+
+                        // taking the user back to the home page so that he cannot update the deleted data as on web page the data still persists and doest change due to not being a react app
+                        window.location.href = "/"
+                    })
+                })
+                .catch((error)=> alert(error.toString()))
+            }
         </script>
 <%- include("partials/footer")  %>

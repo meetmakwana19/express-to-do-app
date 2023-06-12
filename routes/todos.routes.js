@@ -123,7 +123,7 @@ todoRouter.put("/:title", isAuthenticated, (req, res) => {
         })
     })
 })
-todoRouter.delete("/:title", (req, res) => {
+todoRouter.delete("/:title", isAuthenticated, (req, res) => {
     const title = req.params.title.toLowerCase();
     let deletedObj
 
