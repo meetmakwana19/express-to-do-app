@@ -120,13 +120,23 @@ Login -> credentials -> hash(pw)+SALT -> store in DB
 3. Adding the render routing for register in the `routes/views.js`
 4. Renamed to `views.routes.js` and changed respectively the imports in the server.js
 5. Similarly added login auth n routes 
-6. -------------Protected route for add todo functionality :
+6. -------------Protected route for add todo functionality :-----------------
 7. Installed using `npm i jsonwebtoken`
-8. Added `isAuthenticated()` in the `middlewares/index.js`
+8. Added `isAuthenticated()` in the `middlewares/index.js` and used it as a middleware in the `todos.routes.js`
 9.  Signing a JWT token in the login post route in the `auth.routes` and then sending that jwt token as access token through the api response to the frontend login.ejs
 10. Getting that token from backend response to frontend and setting it as local storage via  `login.ejs` when login is successful.
 11. Implementing the workflow of isAuthenticated in the frontend of adding todo page where todo wont be added if user is not logged in.
 12. `todo_add.ejs` uses that localstorage access_token and sends it via header . Then middleware checks its presence and based on response redirect is made
+
+
+---
+ 
+Task : 
+
+- [x] isAuthenticated in 
+  - [x] single GET todo (backend + frontend)
+  - [x] single PUT todo (backend + frontend)
+
 
 Assignment 5 Objectives:
 1. Add isAuthenticated to single GET, UPDATE and DELETE Todo

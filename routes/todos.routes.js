@@ -7,8 +7,9 @@ const { isAuthenticated } = require("../middlewares")
 // calling function express.Router() which is used to channelise all the routers
 const todoRouter = express.Router()
 
+// ----- GET ALL TODOS
 // http://localhost:3000/api/todos
-todoRouter.get("/", isAuthenticated, (req, res)=>{
+todoRouter.get("/", (req, res)=>{
     return utils.readData()
     .then((data)=> {
         res.status(200).json({
@@ -68,8 +69,10 @@ body("completed").custom((completed) => {
         })
     })
 })
+
+// ---- GET SINGLE TODO
 // colon : means anything can be there in the params for "title"
-todoRouter.get("/:title", (req, res) => {
+todoRouter.get("/:title", isAuthenticated, (req, res) => {
     const title = req.params.title.toLowerCase();
     // console.log("param is ", title);
 
@@ -88,7 +91,7 @@ todoRouter.get("/:title", (req, res) => {
         })
     })
 })
-todoRouter.put("/:title", (req, res) => {
+todoRouter.put("/:title", isAuthenticated, (req, res) => {
     const title = req.params.title.toLowerCase();
     // console.log("param is ", title);
     const updatedTodo = req.body
