@@ -27,15 +27,15 @@ router.get("/auth/login", (req, res) => {
 // parameters routes at last
 router.get("/todos/:title", (req, res) => {
     const {title} = req.params
-    console.log("title is ", title);
+    // console.log("title is ", title);
 
     return utils.readData()
     .then((dataArr) => {
         const todo = dataArr.find((element) => {
-            console.log("element is ", element);
+            // console.log("element is ", element);
             return element.title.toLowerCase() === title.toLowerCase()
         })
-        console.log("todo is ", todo);
+        // console.log("todo is ", todo);
         return res.render("todo", {title: "Update", todo})
     })
 })
