@@ -1,5 +1,5 @@
 function logger(req, res, next){
-    console.log("New request :", new Date().toLocaleString(), " , Method: ",req.method, " , URL: ", req.url);
+    console.log("New request :", new Date().toLocaleString(), " , Method: ",req.method, " , URL: ", req.url, "auth header: ", req.headers.authorization ? req.headers.authorization : "null");
     // can log many more things like param, query, body
 
     // attaching something to the alive request
@@ -12,7 +12,7 @@ function logger(req, res, next){
 }
 
 function isAuthenticated(req, res, next){
-    console.log("----------", req.headers.authorization);
+    // console.log("----------", req.headers.authorization);
 
     // checking if the incoming request had some header of key named "authorization" or not
     if(!req.headers.authorization || req.headers.authorization === "null"){
