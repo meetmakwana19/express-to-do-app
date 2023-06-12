@@ -5,8 +5,9 @@ var jwt = require('jsonwebtoken');
 const { SECRET } = require("../config")
 const utils = require("../utils/utils")
 const fs = require("fs/promises")
+const bcrypt = require("bcryptjs")
 
-const USER = []
+// const USER = []
 
 router.post("/register",
 // custom validator 
@@ -32,7 +33,7 @@ body("password").custom((password)=>{
     return false 
 })
 .withMessage("Password should be atleast 8 characters"),
-(req, res)=>{
+async (req, res)=>{
 
     // const {name, email, password } = req.body;
     const newUser = req.body;
@@ -49,20 +50,37 @@ body("password").custom((password)=>{
             data: {}
          })
     }
-    utils.readUsers()
-    .then((data) => {
-        data.push(newUser)
+    try{
 
-        return fs.writeFile("users.json", JSON.stringify(data))
-    })
-    .then(() => {
-        // 201 for resource creation
-        return res.status(201).json({
-            message: "New User Registered",
-            data: newUser,
-            error: null
+        const salt = await bcrypt.genSalt(10);
+        securedPassword = await bcrypt.hash(req.body.password, salt)
+
+        const securedUser = {...newUser, password: securedPassword}
+
+        utils.readUsers()
+        .then((data) => {
+            data.push(securedUser)
+            
+            return fs.writeFile("users.json", JSON.stringify(data))
         })
-    })
+        .then(() => {
+            const token = jwt.sign( newUser.email, SECRET )
+
+            // 201 for resource creation
+            return res.status(201).json({
+                message: "New User Registered",
+                data: {
+                    newUser,
+                    access_token: token
+                },
+                error: null
+            })
+        })
+    }
+    catch(error){
+        console.error("Error: ", error.message)
+        res.status(500).send("Internal server error occured.")
+    }
     /*
     USER.push(
         {
@@ -77,10 +95,12 @@ body("password").custom((password)=>{
 router.post("/login", (req, res) => {
     const { email, password }= req.body
 
-    console.log("---post body---", email, password);
+    // console.log("---post body---", email, password);
 
     return utils.readUsers()
-    .then((user_data) => {
+
+    // using async here because need to use await down there with bcrypt
+    .then( async (user_data) => {
         if(user_data.length <= 0){
             return res.status(404).json({
                 message: "User login failed.",
@@ -104,13 +124,17 @@ router.post("/login", (req, res) => {
             })
         }
         
-        if(user_data[userIndex].password != password){
+        const passwordCompare = await bcrypt.compare(password, user_data[userIndex].password)
+
+        // if(user_data[userIndex].password != password){
+        if(!passwordCompare){
             return res.status(404).json({
                 message: "User login failed.",
                 error: "Password does not match",
                 data: {}
             })
         }
+
         
         // create access token
         // use jwt token 
@@ -124,6 +148,10 @@ router.post("/login", (req, res) => {
             },
             errors: null
         })
+    })
+    .catch((error) => {
+        console.error("Error: ", error.message)
+        res.status(500).send("Internal server error occured.")
     })
 })
 
