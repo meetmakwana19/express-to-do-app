@@ -128,6 +128,31 @@ Login -> credentials -> hash(pw)+SALT -> store in DB
 11. Implementing the workflow of isAuthenticated in the frontend of adding todo page where todo wont be added if user is not logged in.
 12. `todo_add.ejs` uses that localstorage access_token and sends it via header . Then middleware checks its presence and based on response redirect is made
 
+---
+
+##### Protecting routes : 
+
+###### on single GET todo (backend + frontend)
+
+1. Added middleware `isAuthenticated` in the get single todo method of `todos.routes.js`
+2. Added onclick on the li items of the todos in the `index.js`.
+
+###### on PUT todo (backend + frontend)
+
+1. Added middleware `isAuthenticated` in the post todo method of `todos.routes.js`... so here the middleware checks if the incoming header from this request has any authorization header or not. If not there a response is sent by middleware and if the header exists then the http method is allowed to carry out it's next instructions.
+2. Checks are also put on the frontend part in the `todo.ejs` to send the authorization header to the backend and if all is good then proceed ahead otherwise redirect to login.
+
+###### on DELETE todo (backend + frontend)
+
+1. Added middleware `isAuthenticated` in the post todo method of `todos.routes.js`... so here the middleware checks if the incoming header from this request has any authorization header or not. If not there a response is sent by middleware and if the header exists then the http method is allowed to carry out it's next instructions.
+2. Delete button was added in the `login.ejs` along with an onclick function to carry out the window redirect and the DELETE request.
+
+###### on DELETE todo (backend + frontend)
+
+1. Created `users.json` in the root directory of the project... remember to keep the empty file with `[]` as data as parsing it as array to json will cause error ahead when reading the empty file.
+2. Added readUsers() function in the `utils.js` 
+3. Utilized the array retuned by this utility function instead of that local USER array.
+
 
 ---
  
