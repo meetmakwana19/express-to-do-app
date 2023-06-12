@@ -153,6 +153,13 @@ Login -> credentials -> hash(pw)+SALT -> store in DB
 2. Added readUsers() function in the `utils.js` 
 3. Utilized the array retuned by this utility function instead of that local USER array.
 
+###### bcryptjs for password hashing & salting(backend)
+
+1. Installed bcryptjs package 
+```
+npm i bcryptjs
+```
+2. Used it in the `auth.routes.js` to hash the password and then do operations on it. 
 
 ---
  
@@ -163,6 +170,7 @@ Task :
   - [x] single PUT todo (backend + frontend)
   - [x] single DELETE todo (backend + frontend)
 - [x] users.json done for register & login
+- [x] bcryptjs for password hashing & salting
 
 
 Assignment 5 Objectives:
