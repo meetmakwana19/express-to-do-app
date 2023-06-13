@@ -33,7 +33,7 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01" style="margin: 0 16%">
-          <a class="navbar-brand h1 p-0 m-0 me-5" href="/">&#x2710; TODOist</a>
+          <a class="navbar-brand h1 p-0 m-0 me-5 d-none d-lg-block" href="/">&#x2710; TODOist</a>
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
               <a class="nav-link" aria-current="page" href="/">Home</a>
@@ -54,7 +54,12 @@
           </form>
         </div>
       </div>
+      <!-- Displayed when navbar is collapsed -->
+      <ul class="navbar-nav d-lg-none" style="margin: 0 5%"> 
+        <li class="nav-item">
+          <a class="navbar-brand h1" href="/" style="font-size: 35px;">&#x2710; TODOist</a>
+        </li>
+      </ul>
     </nav>
-    <!-- <main class="scroll"></main> -->
   </body>
 </html>

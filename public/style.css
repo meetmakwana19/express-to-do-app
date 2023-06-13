@@ -10,8 +10,17 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
+.navbar-collapse{
+  /* specifically for the mobile view */
+  height: 7%;
+}
+.navbar-toggler {
+  position: absolute;
+  right: 5%;
+  top: 15%;
+}
 footer {
-    /* pushes it to the bottom of the column container. */
+  /* pushes it to the bottom of the column container. */
   margin-top: auto;
 }
 
