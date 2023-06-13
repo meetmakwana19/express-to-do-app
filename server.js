@@ -24,6 +24,10 @@ app.use(middlewares.logger)
 // without this the body parsing would be undefined in the POST calls
 app.use(express.json())
 
+// middleware #3
+// middleware to serve the static files
+app.use(express.static(__dirname + "/public"))
+
 // making a greeting call to check server is running or not
 app.get("/greeting", (req, res) => {
     return res.send("Greetings from Todo app.")

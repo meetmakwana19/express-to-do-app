@@ -1,11 +1,12 @@
 <%- include("partials/header")   %>
-        <div class="container mt-3">
+        <div class="container mt-5">
             <div class="row">
                 <div class="col">
                     <ul class="list-group">
                         <!-- this todos is recieved from the 'get' route of view.routes.js -->
-                        <% todos.forEach((todo)=> { %>
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <% todos.forEach((todo, index)=> { %>
+                        <!-- this index is used to conditionally apply bg-color to the li items -->
+                            <li class="list-group-item d-flex justify-content-between align-items-center <%=index % 2 === 0 ?'even' : 'odd' %>">
                                 <a class="btn todo-title-row" style="display: block;width: 100%;text-align: left" onclick="checkAuth(`/todos/<%=todo.title%>`)">
                                     <%= todo.title %>
                                 </a>

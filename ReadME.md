@@ -168,6 +168,9 @@ const SECRET  = process.env.SECRET
 ```
 
 ---
+
+1. With the help of this https://stackoverflow.com/a/18633827/17796286 ........Added CSS file and updated the project UI
+---
  
 Task : 
 
@@ -177,6 +180,7 @@ Task :
   - [x] single DELETE todo (backend + frontend)
 - [x] users.json done for register & login
 - [x] bcryptjs for password hashing & salting
+- [x] Hosted on render 
 
 
 Assignment 5 Objectives:
