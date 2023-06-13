@@ -60,7 +60,9 @@
                         alert(errorString)
                     }
                     else{
+                        localStorage.setItem("access_token", data.access_token)
                         alert(data.message)
+                        document.getElementById("logout").classList.remove("d-none")
                         window.location.href = "/"
                     }
                 })

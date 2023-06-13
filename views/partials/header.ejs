@@ -44,11 +44,14 @@
           </ul>
           <form class="d-flex" role="search">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item nav-item-width-2">
+              <li class="nav-item nav-item-width-2 d-none" id="login">
                 <a class="nav-link" href="/auth/login">Login</a>
               </li>
-              <li class="nav-item nav-item-width-2">
+              <li class="nav-item nav-item-width-2 d-none" id="register">
                 <a class="nav-link" href="/auth/register">Register</a>
+              </li>              
+              <li class="nav-item nav-item-width-2 d-none" id="logout">
+                <a class="nav-link" href="/" onclick="logOut()">Logout</a>
               </li>              
             </ul>
           </form>
@@ -63,3 +66,24 @@
     </nav>
   </body>
 </html>
+
+<script>
+  window.onload = () => {
+    const token = localStorage.getItem("access_token")
+
+    if(!token){
+      document.getElementById("login").classList.remove("d-none")
+      document.getElementById("register").classList.remove("d-none")
+
+      document.getElementById("logout").classList.add("d-none")
+    }
+    else{
+      document.getElementById("logout").classList.remove("d-none")
+    }
+  }
+  function logOut(){
+    console.log("Logging out !");
+    localStorage.removeItem("access_token")
+    document.getElementById("logout").classList.add("d-none")
+  }
+</script>

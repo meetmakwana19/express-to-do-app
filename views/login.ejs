@@ -58,11 +58,14 @@
                         
                         // --- for protected routes purpose
                         localStorage.setItem("access_token", data.data.access_token)
-
+                        
+                        document.getElementById("logout").classList.remove("d-none")
                         window.location.href = "/"
                     }
                 })
                 .catch((error)=> alert(error.toString()))
+                
+
             })
         </script>
     <%- include("partials/footer") %>
