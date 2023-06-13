@@ -8,7 +8,7 @@ li.odd {
 }
 /* to remove the button from the anchor tag inside the li-items of todos on index page */
 .btn{
-    --bs-btn-border-width: none;
+    --bs-btn-border-width: none!important;
 }
 
 /* for single todo hover effect on index page*/
@@ -17,8 +17,10 @@ li.odd {
     border: none!important;
 }
 .list-group-item:hover{
-    /* background-color: red; */
     transform: scale(1.05);
+
+    /* ;) for the dark color effect >.< */
+    opacity: 0.5;
 }
 
 .todo-description{
