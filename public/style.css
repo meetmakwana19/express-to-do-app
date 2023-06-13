@@ -1,7 +1,22 @@
-.container{
-    margin-top: 100px!important;
-    margin-bottom: 3%;
+.container {
+  margin-top: 100px !important;
+  margin-bottom: 3%;
+  /* allows container to take up the remaining vertical space and push the footer to the bottom. */
+  flex: 1;
 }
+body {
+  /* to make the body behave as a column container */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+footer {
+    /* pushes it to the bottom of the column container. */
+  margin-top: auto;
+}
+
+/* --------------------- */
+
 /* for alternate colors of li-items on index page */
 li.even {
   background-color: lightgray;
@@ -11,28 +26,28 @@ li.odd {
   background-color: darkgray;
 }
 /* to remove the button from the anchor tag inside the li-items of todos on index page */
-.btn{
-    --bs-btn-border-width: none!important;
+.btn {
+  --bs-btn-border-width: none !important;
 }
 
 /* for single todo hover effect on index page*/
-.list-group-item{
-    transition: transform 0.2s;
-    border: none!important;
+.list-group-item {
+  transition: transform 0.2s;
+  border: none !important;
 }
-.list-group-item:hover{
-    transform: scale(1.05);
+.list-group-item:hover {
+  transform: scale(1.05);
 
-    /* ;) for the dark color effect >.< */
-    opacity: 0.5;
+  /* ;) for the dark color effect >.< */
+  opacity: 0.5;
 }
 
-.todo-description{
-    font-size: x-large;
-    /* border: 1px solid white; */
-    /* display: inline; */
-    border-radius: 8px;
+.todo-description {
+  font-size: x-large;
+  /* border: 1px solid white; */
+  /* display: inline; */
+  border-radius: 8px;
 }
-.edit-h1{
-    border-top: 5px solid white;
+.edit-h1 {
+  border-top: 5px solid white;
 }
