@@ -19,6 +19,12 @@ body {
   right: 5%;
   top: 15%;
 }
+.nav-item-width-1{
+  width: 50%;
+}
+.nav-item-width-2{
+  width: 200%;
+}
 .nav-item{
   border-bottom: 2px solid transparent;
 }
