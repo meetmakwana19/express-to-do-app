@@ -1,7 +1,22 @@
+/* for alternate colors of li-items on index page */
 li.even {
   background-color: lightgray;
 }
 
 li.odd {
   background-color: darkgray;
+}
+/* to remove the button from the anchor tag inside the li-items of todos on index page */
+.btn{
+    --bs-btn-border-width: none;
+}
+
+/* for single todo hover effect on index page*/
+.list-group-item{
+    transition: transform 0.2s;
+    border: none!important;
+}
+.list-group-item:hover{
+    /* background-color: red; */
+    transform: scale(1.05);
 }
