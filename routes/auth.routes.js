@@ -2,12 +2,24 @@ const express = require("express")
 const { body, validationResult } = require("express-validator")
 const router = express.Router()
 var jwt = require('jsonwebtoken');
-const { SECRET } = require("../config")
 const utils = require("../utils/utils")
 const fs = require("fs/promises")
 const bcrypt = require("bcryptjs")
 
+// const { SECRET } = require("../config")
+// to use the environment variable for the deployment purpose
+require('dotenv').config();
+const SECRET  = process.env.SECRET
+
+// using filesystem to store users so no longer the need of nodejs runtime array
 // const USER = []
+
+if(SECRET){
+    console.log("secret exists");
+}
+else{
+    console.log("secret does not exists");
+}
 
 router.post("/register",
 // custom validator 

@@ -160,6 +160,12 @@ Login -> credentials -> hash(pw)+SALT -> store in DB
 npm i bcryptjs
 ```
 2. Used it in the `auth.routes.js` to hash the password and then do operations on it. 
+3. Installed `npm i dotenv` package to use the environment variable for the deployment purpose
+   1. Loading the env variables using require() is essential 
+```
+require('dotenv').config();
+const SECRET  = process.env.SECRET
+```
 
 ---
  
