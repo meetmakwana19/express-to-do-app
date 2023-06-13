@@ -1,3 +1,7 @@
+.container{
+    margin-top: 100px!important;
+    margin-bottom: 3%;
+}
 /* for alternate colors of li-items on index page */
 li.even {
   background-color: lightgray;
