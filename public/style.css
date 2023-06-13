@@ -19,6 +19,13 @@ body {
   right: 5%;
   top: 15%;
 }
+.nav-item{
+  border-bottom: 2px solid transparent;
+}
+.nav-item:hover{
+  /* border: 1px solid black;  */
+  border-bottom: 2px solid black;
+}
 footer {
   /* pushes it to the bottom of the column container. */
   margin-top: auto;
