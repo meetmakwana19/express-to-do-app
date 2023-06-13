@@ -61,6 +61,8 @@
                     }
                     else{
                         localStorage.setItem("access_token", data.access_token)
+                        localStorage.setItem("username", data.data.newUser.name)
+
                         alert(data.message)
                         document.getElementById("logout").classList.remove("d-none")
                         window.location.href = "/"

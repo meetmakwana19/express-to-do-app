@@ -83,7 +83,8 @@ async (req, res)=>{
                 message: "New User Registered",
                 data: {
                     newUser,
-                    access_token: token
+                    access_token: token,
+                    user: newUser.name
                 },
                 error: null
             })
@@ -156,7 +157,8 @@ router.post("/login", (req, res) => {
         return res.status(200).json({
             message: "Success ! User logged in",
             data: {
-                access_token: token
+                access_token: token,
+                user: user_data[userIndex].name
             },
             errors: null
         })

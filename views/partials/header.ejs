@@ -50,6 +50,9 @@
               <li class="nav-item nav-item-width-2 d-none" id="register">
                 <a class="nav-link" href="/auth/register">Register</a>
               </li>              
+              <li class="nav-item nav-item-width-3 d-none text-dark" id="hi">
+                <a class="nav-link">Hi </a>
+              </li>              
               <li class="nav-item nav-item-width-2 d-none" id="logout">
                 <a class="nav-link" href="/" onclick="logOut()">Logout</a>
               </li>              
@@ -79,11 +82,17 @@
     }
     else{
       document.getElementById("logout").classList.remove("d-none")
+      document.getElementById("hi").classList.remove("d-none")
+
+      var user_name = localStorage.getItem("username")
+      document.getElementById("hi").innerHTML = `
+      Hi ${user_name} | `
     }
   }
   function logOut(){
     console.log("Logging out !");
     localStorage.removeItem("access_token")
+    localStorage.removeItem("username")
     document.getElementById("logout").classList.add("d-none")
   }
 </script>

@@ -58,6 +58,7 @@
                         
                         // --- for protected routes purpose
                         localStorage.setItem("access_token", data.data.access_token)
+                        localStorage.setItem("username", data.data.user)
                         
                         document.getElementById("logout").classList.remove("d-none")
                         window.location.href = "/"
