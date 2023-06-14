@@ -170,7 +170,20 @@ const SECRET  = process.env.SECRET
 ---
 
 1. With the help of this https://stackoverflow.com/a/18633827/17796286 ........Added CSS file and updated the project UI
+
 ---
+
+##### Deployment
+
+1. Used [render.com](https://render.com/) platform 
+2. Created a `New` `Web Service`.
+3. Connected github repository by connecting the github account.
+4. Followed the steps on the platform and filled the basic details like providing a unique name, region, branch.
+5. Note : Need build command as it is `$ yarn` and start command as it is too `$ node server.js`
+6. Selected `free` instance type
+7. Scroll down to advance section and add environment variable and shifted the project to use the `npm dotenv` package to manage environment variables for this deployment purpose.
+   1. Add environment variable which was kept in the `.env` file of the project which was used to sign the jwt token to create the access_token.
+8. Create the web service and you'll get the deployment link on the same page ! ✅
  
 Task : 
 
